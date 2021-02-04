@@ -6,6 +6,10 @@ const express = require('express'),
   Task = require('./api/models/todoListModel'), //created model loading here
   bodyParser = require('body-parser');
 
+app.use(function (req, res) {
+  res.status(404).send({ url: req.originalUrl + ' not found' })
+});
+
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 
@@ -20,7 +24,8 @@ mongoose.set('useUnifiedTopology', true);
   try {
     await mongoose.connect('mongodb://localhost:27017/Tododb')
   } catch (err) {
-    console.log('error: ' + err)
+    console.log('error: ' + err);
+    return;
   }
 })()
 
