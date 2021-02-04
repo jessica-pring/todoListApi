@@ -5,3 +5,5 @@ const express = require('express'),
 app.listen(port);
 
 console.log('todo list RESTful API server started on: ' + port);
+
+// npm run start
